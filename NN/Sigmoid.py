@@ -6,5 +6,5 @@
 import numpy as np
 
 def sigmoid(z):
-    a = 1/(1+np.exp(-z))
-    return a
+    s = 1 / (1 + np.exp(-z))
+    return s

@@ -27,10 +27,14 @@ def nn_model(X, Y, n_h, num_iterations=1000, print_cost=False):
     n_y = layer_sizes(X, Y)[2]
     parameters = initialize_parameters(n_x, n_h, n_y)
     for i in range(num_iterations):
+        # forward_propagation
         A2, cache = forward_propagation(X, parameters)
+        # forward_propagation
         cost = compute_Cost(A2, Y, parameters)
         if print_cost and i % 1000 == 0:
             print("Cost after iteration %i %f" % (i, cost))
+        #     backward_propagation
         grads = backward_propagation(parameters, cache, X, Y)
+        # update_parameters
         parameters = update_parameters(parameters, grads)
     return parameters

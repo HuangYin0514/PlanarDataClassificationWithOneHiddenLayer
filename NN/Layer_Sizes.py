@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2018/10/28 16:33
 # @Author   : HuangYin
-# @FileName : Layer_sizes.py
+# @FileName : Layer_Sizes.py
 # @Software : PyCharm
 
 def layer_sizes(X, Y):

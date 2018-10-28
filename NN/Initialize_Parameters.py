@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2018/10/28 16:39
 # @Author   : HuangYin
-# @FileName : Initialize_parameters.py
+# @FileName : Initialize_Parameters.py
 # @Software : PyCharm
 
 import numpy as np

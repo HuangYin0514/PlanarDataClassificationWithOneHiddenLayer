@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from planar_utils import load_planar_dataset, plot_decision_boundary
 import sklearn
-from testCases import layer_sizes_test_case, initialize_parameters_test_case
+from testCases import layer_sizes_test_case, initialize_parameters_test_case, forward_propagation_test_case, \
+    backward_propagation_test_case
 
 #  The general methodology to build a Neural Network is to:
 #     1. Define the neural network structure ( # of input units,  # of hidden units, etc).
@@ -43,8 +44,8 @@ print('Accuracy of logistic regression: %d ' % float(
       '% ' + "(percentage of correctly labelled datapoints)")
 print()
 
-# define model size
-from Layer_sizes import layer_sizes
+# define model structure
+from Layer_Sizes import layer_sizes
 
 X_assess, Y_assess = layer_sizes_test_case()
 (n_x, n_h, n_y) = layer_sizes(X_assess, Y_assess)
@@ -54,7 +55,7 @@ print("The size of the output layer is: n_y = " + str(n_y))
 print()
 
 # Initialize_parameters
-from Initialize_parameters import initialize_parameters
+from Initialize_Parameters import initialize_parameters
 
 n_x, n_h, n_y = initialize_parameters_test_case()
 parameters = initialize_parameters(n_x, n_h, n_y)
@@ -62,3 +63,10 @@ print("W1 = " + str(parameters["W1"]))
 print("b1 = " + str(parameters["b1"]))
 print("W2 = " + str(parameters["W2"]))
 print("b2 = " + str(parameters["b2"]))
+
+# the loop
+from Forward_Propagation import forward_propagation
+
+X_assess, parameters = forward_propagation_test_case()
+A2, cache = forward_propagation(X_assess, parameters)
+print(np.mean(cache["Z1"]), np.mean(cache["A1"]), np.mean(cache["A2"]), np.mean(cache["A2"]))

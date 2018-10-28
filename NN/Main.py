@@ -122,4 +122,9 @@ print()
 parameters = nn_model(X, Y, n_h=4, num_iterations=10000, print_cost=True)
 plot_decision_boundary(lambda x: predict(parameters, x.T), X, np.squeeze(Y))
 plt.title("Decision Boundary for hideen layer size " + str(4))
-plt.show()
+# plt.show()
+
+# accuracy
+prediction = predict(parameters, X)
+print(
+    "Accuracy : %d" % float((np.dot(Y, prediction.T) + np.dot(1 - Y, (1 - prediction).T)) / float(Y.size) * 100) + "%")

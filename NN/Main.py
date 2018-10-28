@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from planar_utils import load_planar_dataset, plot_decision_boundary
 import sklearn
 from testCases import layer_sizes_test_case, initialize_parameters_test_case, forward_propagation_test_case, \
-    compute_cost_test_case, backward_propagation_test_case, update_parameters_test_case, nn_model_test_case
+    compute_cost_test_case, backward_propagation_test_case, update_parameters_test_case, nn_model_test_case, \
+    predict_test_case
 
 #  The general methodology to build a Neural Network is to:
 #     1. Define the neural network structure ( # of input units,  # of hidden units, etc).
@@ -82,8 +83,8 @@ print()
 # compute gradient
 from Backward_Propagation import backward_propagation
 
-parameters, cache, X, Y = backward_propagation_test_case()
-grads = backward_propagation(parameters, cache, X, Y)
+parameters, cache, X1, Y1 = backward_propagation_test_case()
+grads = backward_propagation(parameters, cache, X1, Y1)
 print("dW1 = " + str(grads["dW1"]))
 print("db1 = " + str(grads["db1"]))
 print("dW2 = " + str(grads["dW2"]))
@@ -110,3 +111,15 @@ print("W2 = " + str(parameters["W2"]))
 print("b2 = " + str(parameters["b2"]))
 
 # predict
+from Predict import predict
+
+parameters, X_assess = predict_test_case()
+prediction = predict(parameters, X_assess)
+print("prediction mean = " + str(np.mean(prediction)))
+print()
+
+# Build a model with a n_h-dimensional hidden layer
+parameters = nn_model(X, Y, n_h=4, num_iterations=10000, print_cost=True)
+plot_decision_boundary(lambda x: predict(parameters, x.T), X, np.squeeze(Y))
+plt.title("Decision Boundary for hideen layer size " + str(4))
+plt.show()

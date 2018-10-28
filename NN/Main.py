@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from planar_utils import load_planar_dataset, plot_decision_boundary
 import sklearn
 from testCases import layer_sizes_test_case, initialize_parameters_test_case, forward_propagation_test_case, \
-    backward_propagation_test_case
+    compute_cost_test_case, backward_propagation_test_case
 
 #  The general methodology to build a Neural Network is to:
 #     1. Define the neural network structure ( # of input units,  # of hidden units, etc).
@@ -70,3 +70,21 @@ from Forward_Propagation import forward_propagation
 X_assess, parameters = forward_propagation_test_case()
 A2, cache = forward_propagation(X_assess, parameters)
 print(np.mean(cache["Z1"]), np.mean(cache["A1"]), np.mean(cache["A2"]), np.mean(cache["A2"]))
+print()
+
+# compute cost
+from Compute_Cost import compute_Cost
+
+A2, Y_assess, parameters = compute_cost_test_case()
+print("cost = " + str(compute_Cost(A2, Y_assess, parameters)))
+print()
+
+# compute gradient
+from Backward_Propagation import backward_propagation
+
+parameters, cache, X, Y = backward_propagation_test_case()
+grads = backward_propagation(parameters, cache, X, Y)
+print("dW1 = " + str(grads["dW1"]))
+print("db1 = " + str(grads["db1"]))
+print("dW2 = " + str(grads["dW2"]))
+print("db2 = " + str(grads["db2"]))

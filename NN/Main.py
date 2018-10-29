@@ -135,12 +135,12 @@ hidden_layer_size = [1, 2, 3, 4, 5, 20, 50]
 for i, n_h in enumerate(hidden_layer_size):
     plt.subplot(5, 2, i + 1)
     plt.title("hidden layer of size %d " % n_h)
-    parameters = nn_model(X, Y, n_h, num_iterations=500)
+    parameters = nn_model(X, Y, n_h, num_iterations=5000)
     plot_decision_boundary(lambda x: predict(parameters, x.T), X, np.squeeze(Y))
     predictions = predict(parameters, X)
     accuracy = float((np.dot(Y, predictions.T) + np.dot(1 - Y, 1 - predictions.T)) / float(Y.size) * 100)
     print("Accuracy for {} hidden units: {}%".format(n_h, accuracy))
-plt.show()
+# plt.show()
 
 # new datasets
 noisy_circles, noisy_moons, blobs, gaussian_quantiles, no_structure = load_extra_datasets()
@@ -158,4 +158,4 @@ if dataset == "blobs":
     Y = Y % 2
 plt.scatter(X[0, :], X[1, :], c=np.squeeze(Y), s =40 ,cmap=plt.cm.Spectral)
 plt.title("new dataSet :"+str(dataset))
-plt.show()
+# plt.show()
